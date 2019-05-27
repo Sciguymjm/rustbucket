@@ -3,6 +3,7 @@ name = "rustbucket"
 version = "0.1.0"
 authors = ["Matthew Mage <sciguymjm@gmail.com>"]
 edition = "2018"
+build = "build.rs"
 
 [dependencies]
 boxcars = "0.3.2"

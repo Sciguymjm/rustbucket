@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from cffi import FFI
-
+import numpy as np
 ffi = FFI()
 # ffi.cdef("""
 #     void print_text(const char*);
@@ -40,3 +40,7 @@ def to_cstring(text):
 replay = C.parse(to_cstring("C:\\Users\\Matt\\PycharmProjects\\boxcars\\assets\\edbb.replay"))
 
 print("Python Major Version {}".format(replay.major_version))
+float_out = ffi.new("float[3]")
+
+nnums = np.ones(3, dtype=np.float64)
+print(np.frombuffer(ffi.buffer(replay.arr.data, 3*8), dtype=np.float64))
