@@ -5,3 +5,9 @@ authors = ["Sciguymjm <sciguymjm@gmail.com>"]
 edition = "2018"
 
 [dependencies]
+boxcars = "0.3.2"
+failure = "0.1.1"
+
+[lib]
+name = "rustbucket"
+crate-type = ["dylib"]
