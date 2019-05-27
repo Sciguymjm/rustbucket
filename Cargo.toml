@@ -1,12 +1,16 @@
 [package]
 name = "rustbucket"
 version = "0.1.0"
-authors = ["Sciguymjm <sciguymjm@gmail.com>"]
+authors = ["Matthew Mage <sciguymjm@gmail.com>"]
 edition = "2018"
 
 [dependencies]
 boxcars = "0.3.2"
 failure = "0.1.1"
+libc = "0.2.55"
+
+[build-dependencies]
+cbindgen = "0.8.0"
 
 [lib]
 name = "rustbucket"
