@@ -1,0 +1,7 @@
+[package]
+name = "rustbucket"
+version = "0.1.0"
+authors = ["Sciguymjm <sciguymjm@gmail.com>"]
+edition = "2018"
+
+[dependencies]
