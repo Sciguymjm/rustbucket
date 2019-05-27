@@ -43,4 +43,9 @@ print("Python Major Version {}".format(replay.major_version))
 float_out = ffi.new("float[3]")
 
 nnums = np.ones(3, dtype=np.float64)
-print(np.frombuffer(ffi.buffer(replay.arr.data, 3*8), dtype=np.float64))
+arr_len = replay.arr.len
+print("Array length:", arr_len)
+arr_1d = np.frombuffer(ffi.buffer(replay.arr.data, 2 * arr_len * 8), dtype=np.float64)
+print(arr_1d)
+arr_2d = arr_1d.reshape((arr_len, 2))
+print(arr_2d)

@@ -29,13 +29,13 @@ pub struct Array {
 fn reconstitute(arr: &Array) -> Vec<[f64; 2]> {
     unsafe { slice::from_raw_parts(arr.data as *mut [f64; 2], arr.len).to_vec() }
 }
-fn gen_array(v: Vec<[f64; 2]>) -> *const Array {
+fn gen_array(v: Vec<[f64; 2]>) -> Array {
     let array = Array {
         data: v.as_ptr() as *const c_void,
         len: v.len() as size_t,
     };
     mem::forget(v);
-    &array
+    array
 }
 fn gen_array1d(v: Vec<f64>) -> Array {
     let array = Array {
@@ -62,13 +62,7 @@ pub extern fn parse(text: *const c_char) -> *mut ReplayObj {
         let ext_vec = vec![
             [4.0, 1.0],
             [5.0, 2.0],
-            [5.0, 3.0],
-            [4.0, 4.0],
-            [3.0, 4.0],
-            [2.0, 3.0],
-            [2.0, 2.0],
-            [3.0, 1.0],
-            [4.0, 1.0],
+            [6.0, 420.0]
         ];
 
         let d1_vec = vec![
@@ -79,7 +73,7 @@ pub extern fn parse(text: *const c_char) -> *mut ReplayObj {
             header_crc: replay.header_crc,
             major_version: replay.major_version,
             minor_version: replay.minor_version,
-            arr: gen_array1d(d1_vec)
+            arr: gen_array(ext_vec)
         });
         println!("Rust Major Version {}", replay.major_version);
 //        for property in replay.properties {
